@@ -23,8 +23,8 @@ class ProductServiceTest {
   }
   @AfterEach
   void afterEach() {
-    ProductService.setDevProduct(new HashMap<>());
-    ProductService.setTradeProduct(new HashMap<>());
+    ProductServiceImpl.setDevProduct(new HashMap<>());
+    ProductServiceImpl.setTradeProduct(new HashMap<>());
   }
 
 
@@ -44,12 +44,12 @@ class ProductServiceTest {
   @DisplayName("createProduct 메서드가 상품 코드와 진열 여부를 정확히 생성하는지 확인")
   void createProductTest() {
     // given - 이러한 데이터가 주어질 때
-    ProductService service = new ProductService();
+    ProductService service = new ProductServiceImpl();
     // then - 무엇을 했다.
     service.createProduct();
     // when - 그것에 대한 결과는 이래야 한다.
-    Map<String, Boolean> devProduct = ProductService.getDevProduct();
-    Map<String, Boolean> tradeProduct = ProductService.getTradeProduct();
+    Map<String, Boolean> devProduct = ProductServiceImpl.getDevProduct();
+    Map<String, Boolean> tradeProduct = ProductServiceImpl.getTradeProduct();
 
     // 생성된 상품 코드 개수 확인 (list test 확인 가능)
     assertEquals(20, devProduct.size());
@@ -71,7 +71,7 @@ class ProductServiceTest {
   @DisplayName("상품이_교환가능이_아닐_경우")
   void checkProduct_failed () {
     // given - 이러한 데이터가 주어질 때
-    ProductService service = new ProductService();
+    ProductService service = new ProductServiceImpl();
     service.createProduct();
     String productCode = "123456789";
 
@@ -87,7 +87,7 @@ class ProductServiceTest {
   @DisplayName("상품_교환_실패_상점코드가_다를_경우")
   void sameShopCode_failed () {
     // given - 이러한 데이터가 주어질 때
-    ProductService service = new ProductService();
+    ProductService service = new ProductServiceImpl();
     service.createProduct();
     String productCode = "123456789";
     String shopCode = "abcdef";
@@ -101,7 +101,7 @@ class ProductServiceTest {
   @DisplayName("상품_교환_실패_상품코드가_다르거나_목록에_없는_경우")
   void none_or_dif_claimProductCode_failed () {
     // given - 이러한 데이터가 주어질 때
-    ProductService service = new ProductService();
+    ProductService service = new ProductServiceImpl();
     service.createProduct();
     String randomShopCode = randomShopCode();
     //문자는 못들어오지만 다르거나, 목록에 없다는 전제 하에 사용하기 위함
@@ -118,12 +118,12 @@ class ProductServiceTest {
   @DisplayName("상품_교환_실패_이미_교환한_상품일_경우")
   void alreadyProduct_failed () {
     // given - 이러한 데이터가 주어질 때
-    ProductService service = new ProductService();
+    ProductService service = new ProductServiceImpl();
     service.createProduct();
     String randomShopCode = randomShopCode();
     String productCode = "123456789";
 
-    Map<String, Boolean> tradeProduct = ProductService.getTradeProduct();
+    Map<String, Boolean> tradeProduct = ProductServiceImpl.getTradeProduct();
     tradeProduct.put(productCode, false);
     // then - 무엇을 했다.
     // when - 그것에 대한 결과는 이래야 한다.

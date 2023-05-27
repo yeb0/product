@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Scanner;
 import service.HelpService;
 import service.ProductService;
+import service.ProductServiceImpl;
 
 public class DispatcherController {
 
@@ -16,7 +17,7 @@ public class DispatcherController {
 
     controllers = new HashMap<>();
 
-    ProductService productService = new ProductService();
+    ProductService productService = new ProductServiceImpl();
     HelpService helpService = new HelpService();
 
     controllers.put("CHECK", new CheckController(productService));

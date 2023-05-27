@@ -10,21 +10,12 @@ public class Product {
     this.productCode = productCode;
   }
 
-  public String getShopCode() {
-    return shopCode;
-  }
 
-  public void setShopCode(String shopCode) {
-    this.shopCode = shopCode;
-  }
 
   public String getProductCode() {
     return productCode;
   }
 
-  public void setProductCode(String productCode) {
-    this.productCode = productCode;
-  }
 
 
   @Override
