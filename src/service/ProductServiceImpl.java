@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements ProductService {
+
   private static final String STRING_A_TO_Z = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
   final String shopCode = randomShopCode();
   static Map<String, Boolean> devProduct = new HashMap<>();
@@ -69,12 +70,14 @@ public class ProductServiceImpl implements ProductService{
 
   @Override
   public void checkProduct(String inputProductCode) {
-    if (tradeProduct.containsKey(inputProductCode)) {
-      System.out.println("상점 코드 : " + shopCode);
-      System.out.println("교환할 수 있는 상품입니다. : " + inputProductCode);
-    } else {
+    if (!tradeProduct.containsKey(inputProductCode)) { // 해당 키의 존재 여부
+      throw new CustomException(ErrorCode.NOT_FOUND_PRODUCT_CODE);
+    }
+    if (tradeProduct.get(inputProductCode).equals(false)) {
       throw new CustomException(ErrorCode.ALREADY_PRODUCT);
     }
+    System.out.println("상점 코드 : " + shopCode);
+    System.out.println("교환할 수 있는 상품입니다. : " + inputProductCode);
     System.out.println("성공적으로 상점의 코드와 상품 코드를 불러왔습니다.");
   }
 
