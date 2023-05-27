@@ -28,10 +28,10 @@ SHARETREATS는 고객으로 부터 상품 코드를 받고 해당하는 상품�
 **4 - (기능추가) USER GET_LIST** -> 사용자가 무엇을 교환했고, 사용자가 교환한 상품들을 조회할 수 있어야 된다 생각하여 추가했습니다. 
 응답값으로 해당 상품의 상점코드와 상품코드를 LIST 형식으로 볼 수 있습니다.
 
-## Project Architecture
+## Project Architecture 🔭
 
 ![image](https://github.com/yeb0/product/assets/119172260/2c9c4aa6-ae3c-452c-bb97-8c229d6f87a3)
 
 
-## Stack 
+## Stack 📐
 - Java 11
