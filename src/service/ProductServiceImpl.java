@@ -89,7 +89,7 @@ public class ProductServiceImpl implements ProductService {
     if (!tradeProduct.containsKey(inputProductCode)) {
       throw new CustomException(ErrorCode.NOT_FOUND_PRODUCT_CODE);
     }
-    if (!tradeProduct.get(inputProductCode)) {
+    if (tradeProduct.get(inputProductCode).equals(false)) {
       throw new CustomException(ErrorCode.ALREADY_PRODUCT);
     }
     System.out.println("상점, 상품코드 둘 다 일치합니다. 교환합니다 !");
