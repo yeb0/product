@@ -80,7 +80,7 @@ class ProductServiceTest {
 
     // then - 그것에 대한 결과는 이래야 한다.
     CustomException exception = assertThrows(CustomException.class, executable);
-    assertEquals(ErrorCode.ALREADY_PRODUCT.getDescription(), exception.getMessage());
+    assertEquals(ErrorCode.NOT_FOUND_PRODUCT_CODE.getDescription(), exception.getMessage());
   }
 
   @Test
